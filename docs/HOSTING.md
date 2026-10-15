@@ -1,5 +1,7 @@
 # Hosting on Home Assistant hardware
 
+Ready to install? [Choose your setup](START-HERE.md) provides step-by-step Docker routes for Windows, Mac and Linux, with HA on the same computer or elsewhere.
+
 You do not necessarily need another computer. The Node/FFmpeg relay can share a suitable host with Home Assistant, provided there is enough spare capacity for video decoding and encoding. The TV app still runs on the LG, and HA still uses its native LG integration to launch it.
 
 ## Choose the installation path

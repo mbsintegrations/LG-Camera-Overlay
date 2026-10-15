@@ -1,5 +1,7 @@
 # Installation, in order
 
+For a guided first Docker installation, use [Choose your setup](START-HERE.md): Windows, Mac or Linux, with Home Assistant on the same computer or elsewhere. This page is the detailed reference, including native installations.
+
 Do one manual camera test before enabling automatic alerts. Keep a private copy of your configuration and previous IPK before updating an existing installation.
 
 ## 1. Prepare the network and server

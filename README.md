@@ -4,7 +4,7 @@ Show a live camera panel over what you are watching on an LG webOS TV, including
 
 User-confirmed viewing includes YouTube, Netflix and Plex on the tested LG TVs, plus Plex playing on an Apple TV connected to the OLED65B9PLA through HDMI. See the compatibility details below for the tested combinations.
 
-**[Start the installation guide](docs/INSTALL.md)** · [Releases](https://github.com/mbsintegrations/LG-Camera-Overlay/releases) · [Home Assistant setup](docs/HOME-ASSISTANT.md) · [Troubleshooting](docs/TROUBLESHOOTING.md)
+**[Start here: choose Windows, Mac or Linux Docker](docs/START-HERE.md)** · [Detailed installation reference](docs/INSTALL.md) · [Releases](https://github.com/mbsintegrations/LG-Camera-Overlay/releases) · [Home Assistant setup](docs/HOME-ASSISTANT.md) · [Troubleshooting](docs/TROUBLESHOOTING.md)
 
 ```mermaid
 flowchart LR
