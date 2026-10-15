@@ -158,7 +158,11 @@ The last command opens a question-and-answer device setup. Choose **Add** and su
 | IP address | Your LG's actual IP from Developer Mode |
 | Port | `9922` |
 | SSH user | `prisoner` |
-| Authentication/password, if asked | Leave the SSH password empty; the next command retrieves the key |
+| Description, if asked | Any useful label, such as Living room TV |
+| Select authentication, if asked | Choose `password` for this initial profile |
+| Enter password | Leave empty and press Enter; the next command retrieves the Developer Mode key |
+| Set default, if asked | No is fine; the commands explicitly select `lounge-tv` |
+| Save | Yes |
 
 Save/finish the prompts, then run:
 
