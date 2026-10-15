@@ -14,7 +14,7 @@ flowchart LR
   Events[Person / vehicle / doorbell] --> HA
 ```
 
-The TV app, relay and Home Assistant configuration are three separate installation steps. This uses HA's native **LG webOS TV** integration; there is no custom HA integration, HACS installation or HA OS App to install. The relay runs on an always-available computer or locally built Docker container.
+The TV app, relay and Home Assistant configuration are three separate installation steps. This uses HA's native **LG webOS TV** integration; no custom HA integration or HACS installation is needed. The relay runs on an always-available computer or locally built Docker container, which can share a Linux/NAS host with Home Assistant. **A packaged HA OS App (formerly add-on) is not included in this release.** See [hosting on HA hardware and hardware recommendations](docs/HOSTING.md) for the available options and their limits.
 
 ## What it does
 

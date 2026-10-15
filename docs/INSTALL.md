@@ -101,6 +101,8 @@ curl http://127.0.0.1:8766/health
 
 ## 6. Docker / NAS option
 
+This can run as a separate container on the same Linux/NAS host as Home Assistant Container, or alongside an HA OS VM where the host supports containers. The Compose file is not an HA OS App installer. Read [hosting options and hardware recommendations](HOSTING.md) before choosing a shared host.
+
 The supplied Dockerfile builds locally using Debian's FFmpeg package. No prebuilt container image is published. Set `ffmpeg` to `ffmpeg` and `hardwareDecode` to `none` in the container configuration. Prepare private config and keys using step 4 first. On Linux, ensure the container's UID 1000 can read/write `private` (session-token caching) and write `logs`; avoid world-readable permissions. On a NAS, adapt folder ownership/ACL to its Docker user mapping.
 
 ```sh
