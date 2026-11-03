@@ -1,5 +1,5 @@
 name: LG Camera Overlay (EXPERIMENTAL - NOT TESTED)
-version: 1.2.0
+version: 1.2.1
 slug: lg_camera_overlay
 description: Local camera overlay relay and guided TV setup
 arch:

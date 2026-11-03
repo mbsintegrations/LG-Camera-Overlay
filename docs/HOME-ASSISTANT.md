@@ -87,6 +87,18 @@ Temporarily use two uniquely named **event triggers** on the automation, one nor
 
 ## Updates
 
+### Upgrade from 1.2.0 to 1.2.1 (screensaver fix)
+
+If **Restore screen before showing the camera** is enabled, some TVs reject screen-on when already displaying a picture. In 1.2.0 this stopped the camera launch. Version 1.2.1 treats screen restoration as best effort and still launches if the TV remains active. Actual launch errors still fail normally.
+
+1. Back up your launch blueprint and scripts.
+2. In Home Assistant, open **Settings → Automations & scenes → Blueprints**, find **LG Camera Overlay - launch one camera on one TV**, and choose **Re-import blueprint** from its menu. Confirm the update. Existing script inputs/settings remain in place. Reload scripts if an already-loaded script still uses the old sequence.
+3. If you copied the script actions manually instead of using the blueprint, add `continue_on_error: true` to the screen-on action only, at the same indentation as `action:`. Keep both active-TV checks and the launch action unchanged.
+4. For the configurator's **Show on TV** test, close the old configurator and run the new 1.2.1 setup ZIP. Its screen-restoration request now uses the same best-effort behaviour.
+5. While watching your TV, check normal viewing with restoration enabled, then check screensaver dismissal.
+
+**The 1.2.0 TV app and relay remain compatible; neither needs reinstalling for this fix.** Installing a newer TV IPK alone does not update an imported HA blueprint. Screen-on rejections may still appear in HA logs/traces, but no longer block the launch. If screen restoration genuinely fails, the overlay may remain hidden by the screensaver.
+
 ### Optional screensaver dismissal
 
 In each camera launch script, enable **Restore screen before showing the camera** if you want alerts to dismiss LG's screensaver. In the configurator, the equivalent checkbox is **Restore the TV screen before camera alerts** in step 4; regenerate the script and private bundle after changing it.
@@ -98,8 +110,8 @@ On OLED65B9PLA (firmware 05.50.00, SDK 4.10.0), a plain overlay was hidden by LG
 ### Upgrade from 1.0.0 or 1.1.0
 
 1. Back up your private relay folder and your HA scripts/automations. Keep the old package until the new version passes a viewing test.
-2. Extract the 1.2.0 setup ZIP into a new folder. Start the configurator; existing saved settings on the same setup computer remain available. Install the 1.2.0 TV app on each TV you use. Do not uninstall the Launcher app or its helper.
-3. Build the new relay image with `docker build -t lg-camera-overlay:1.2.0 .` from the extracted source. In your existing private runtime Compose file, change only the image tag to `lg-camera-overlay:1.2.0`, then run `docker compose up -d`. Keep your existing private folder/volume mappings. Do not extract a new private bundle over a working runtime folder.
+2. Extract the 1.2.1 setup ZIP into a new folder. Start the configurator; existing saved settings on the same setup computer remain available. Install the 1.2.1 TV app on each TV you use. Do not uninstall the Launcher app or its helper.
+3. Build the new relay image with `docker build -t lg-camera-overlay:1.2.1 .` from the extracted source. In your existing private runtime Compose file, change only the image tag to `lg-camera-overlay:1.2.1`, then run `docker compose up -d`. Keep your existing private folder/volume mappings. Do not extract a new private bundle over a working runtime folder.
 4. Re-import the launch and alert blueprints from their existing project URLs. Import the new [pause/resume blueprint](../blueprints/automation/pause-overlays.yaml) if wanted. Existing scripts and alert automations continue with defaults: screensaver restoration off and no pause helper selected.
 5. Choose appearance settings in your camera scripts, select an optional shared pause helper in each alert coordinator, and enable screen restoration only where wanted. Configurator users can regenerate scripts after selecting the new controls.
 6. Watch one manual camera test, then test normal/priority alerts and pause/resume. Check Launcher still behaves normally if installed. Keep only one Developer Mode renewal owner.

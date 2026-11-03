@@ -195,7 +195,7 @@ function update() {
   $("deploy-help").textContent =
     selection() === "haos"
       ? "EXPERIMENTAL — NOT TESTED on HA OS. Install the experimental package only in a disposable HA OS system. No one-click App repository is supplied."
-      : "Build or load the lg-camera-overlay:1.2.0 image on your relay host first, then extract the private bundle into a new folder. Follow the illustrated configurator guide for startup and folder permissions.";
+      : "Build or load the lg-camera-overlay:1.2.1 image on your relay host first, then extract the private bundle into a new folder. Follow the illustrated configurator guide for startup and folder permissions.";
 }
 function navigate(n) {
   step = Math.max(0, Math.min(5, n));

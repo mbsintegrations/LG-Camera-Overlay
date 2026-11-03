@@ -1,6 +1,6 @@
 {
   "name": "lg-camera-overlay",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "private": true,
   "license": "GPL-3.0-only",
   "engines": {
@@ -8,7 +8,7 @@
   },
   "scripts": {
     "start": "node relay/relay.cjs",
-    "test": "node tests/overlay.cjs && node tests/multitv.cjs && node --test tests/config.test.cjs tests/setup.test.cjs",
+    "test": "node tests/overlay.cjs && node tests/multitv.cjs && node --test tests/config.test.cjs tests/setup.test.cjs tests/screensaver.test.cjs",
     "check": "node scripts/check-config.cjs",
     "build": "node scripts/build.cjs",
     "pair": "node scripts/pair.cjs",
