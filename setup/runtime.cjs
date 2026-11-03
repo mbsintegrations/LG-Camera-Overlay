@@ -227,13 +227,17 @@ async function haLaunch(connection, payload, dismissScreensaver = false) {
   if (!["on", "playing", "paused", "idle", "buffering"].includes(current.state))
     fail("The TV is off or unavailable. Turn it on yourself before testing.");
   if (dismissScreensaver) {
-    const screen = await fetch(connection.base + "/api/services/webostv/command", {
-      method: "POST", headers,
-      body: JSON.stringify({ entity_id: payload.entity_id, command: "com.webos.service.tvpower/power/turnOnScreen" }),
-      redirect: "error", signal: AbortSignal.timeout(12000),
-    });
-    if (!screen.ok) fail("Home Assistant did not accept screen-on. The overlay was not launched.");
-    await screen.body.cancel();
+    try {
+      const screen = await fetch(connection.base + "/api/services/webostv/command", {
+        method: "POST", headers,
+        body: JSON.stringify({ entity_id: payload.entity_id, command: "com.webos.service.tvpower/power/turnOnScreen" }),
+        redirect: "error", signal: AbortSignal.timeout(12000),
+      });
+      await screen.body?.cancel();
+    } catch {
+      // Best effort, matching the blueprint: already-on TVs can reject this
+      // command. The state recheck and actual launch below must still succeed.
+    }
     await new Promise((resolve) => setTimeout(resolve, 1500));
     const check = await fetch(connection.base + "/api/states/" + encodeURIComponent(payload.entity_id), {
       headers, redirect: "error", signal: AbortSignal.timeout(8000),

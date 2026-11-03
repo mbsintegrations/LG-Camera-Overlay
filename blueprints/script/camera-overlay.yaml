@@ -116,6 +116,9 @@ sequence:
         value_template: '{{ restore_screen }}'
     then:
       - action: webostv.command
+        # Some TVs reject screen-on when already active. Restoration is optional;
+        # retain the active-TV recheck and still attempt the camera launch.
+        continue_on_error: true
         target:
           entity_id: !input tv
         data:

@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.1 — 3 November 2026
+
+- Fix #28: an already-on TV rejecting the optional screen-on command no longer stops the camera launch. Both TV-active guards remain; actual launch errors are not suppressed. Thanks to Artur Laptev for the report.
+- Apply the same best-effort screen restoration to the configurator test button, including request failures.
+- Add Home Assistant script-engine and configurator regression coverage. Re-import the launch blueprint to apply the fix; existing 1.2.0 TV apps and relays remain compatible.
+
 ## 1.2.0 — 31 October 2026
 
 - Add an optional shared pause helper to alert coordinators, plus a schedule/sensor-driven pause and resume blueprint. Normal and priority alerts check pause both at arrival and before execution; manual camera buttons remain available.

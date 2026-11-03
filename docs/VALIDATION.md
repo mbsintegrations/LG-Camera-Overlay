@@ -1,5 +1,12 @@
 # Validation record
 
+## 1.2.1 regression validation, 3 November 2026
+
+- An isolated NAS Docker container using the existing HA Test image (Home Assistant 2026.10.1) reproduced the old blueprint failure with a simulated screen-on rejection and passed nine cases using the real HA script engine. No TV integration or household configuration was loaded; the container had no network.
+- Cases cover already-on rejection, successful dismissal, disabled restoration, initially off/unavailable TV, off/unavailable after restoration, and launch errors remaining failures.
+- Ten configurator HTTP regression cases cover these paths plus a disconnected screen-on request and failed state recheck.
+- This verifies error handling, not new physical-model compatibility. The reporter's 75SM9000PLA (firmware 05.50.00, SDK 4.10.0) has not yet been physically retested with the fix. Existing 1.2.0 physical evidence below remains applicable to the unchanged player/relay.
+
 ## Tested and operating setups
 
 Validation records cover 16, 25 and 31 October 2026. Historical viewing reports and release-specific tests are distinguished below; results apply only to the stated models, builds and playback paths.

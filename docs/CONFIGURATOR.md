@@ -10,9 +10,9 @@ Have these ready: your LG Developer Mode account and TV address, a camera stream
 
 ## Before you start: download and open setup
 
-**Already using an earlier release?** Follow the [upgrade steps](HOME-ASSISTANT.md#upgrade-from-100-or-110) to preserve your private settings and existing Launcher setup.
+**Already on 1.2.0?** Follow the [screensaver-fix update steps](HOME-ASSISTANT.md#upgrade-from-120-to-121-screensaver-fix): re-import the HA launch blueprint and update the configurator if you use its test button. No TV-app or relay reinstall is needed. For 1.0.0/1.1.0, follow the [full upgrade steps](HOME-ASSISTANT.md#upgrade-from-100-or-110).
 
-Download **LG-Camera-Overlay-Setup-1.2.0.zip** from [release v1.2.0](https://github.com/mbsintegrations/LG-Camera-Overlay/releases/tag/v1.2.0). Extract the ZIP into a new folder; do not run it from inside the ZIP. This download includes the verified TV package, setup screens, relay source and guides. The TV app and setup package both use version 1.2.0. Updating the TV app is required for the new appearance controls.
+Download **LG-Camera-Overlay-Setup-1.2.1.zip** from [release v1.2.1](https://github.com/mbsintegrations/LG-Camera-Overlay/releases/tag/v1.2.1). Extract the ZIP into a new folder; do not run it from inside the ZIP. This download includes the verified TV package, setup screens, relay source and guides. The TV app and setup package both use version 1.2.1. Appearance controls require TV app 1.2.0 or newer; the 1.2.1 patch does not change the player.
 
 Install **Node.js LTS 22 or newer** from [nodejs.org](https://nodejs.org/en/download). Then:
 
@@ -92,7 +92,7 @@ Choose **Download private installation bundle** in **Finish & test**. It contain
 Open a terminal in the extracted **setup/source download** and build the image once:
 
 ```sh
-docker build -t lg-camera-overlay:1.2.0 .
+docker build -t lg-camera-overlay:1.2.1 .
 ```
 
 Then open a terminal in the extracted **private installation bundle** and start it:
@@ -102,7 +102,7 @@ docker compose up -d
 docker compose logs --tail 50
 ```
 
-The image is built locally; no prebuilt registry image is supplied. For a different Docker host of the same architecture, `docker save -o camera-overlay-image.tar lg-camera-overlay:1.2.0` and `docker load -i camera-overlay-image.tar` transfer the built image. An Intel/AMD image is not an ARM image.
+The image is built locally; no prebuilt registry image is supplied. For a different Docker host of the same architecture, `docker save -o camera-overlay-image.tar lg-camera-overlay:1.2.1` and `docker load -i camera-overlay-image.tar` transfer the built image. An Intel/AMD image is not an ARM image.
 
 On Linux/NAS the container runs as **UID 1000**. That user needs read access to the private configuration/keys and write access to `private` and `logs`. On Linux, from the private runtime folder, an administrator can run `sudo chown -R 1000:1000 private logs` and `sudo chmod 700 private logs`. On a NAS, use its supported folder ownership/permission controls or ask its administrator. Do not make these folders publicly readable to fix permission errors.
 

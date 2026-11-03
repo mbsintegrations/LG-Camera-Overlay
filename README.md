@@ -1,7 +1,7 @@
 # LG Camera Overlay
 
 [![Validation](https://github.com/mbsintegrations/LG-Camera-Overlay/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/mbsintegrations/LG-Camera-Overlay/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/github/v/release/mbsintegrations/LG-Camera-Overlay?cacheSeconds=300&v=1.2.0)](https://github.com/mbsintegrations/LG-Camera-Overlay/releases)
+[![Release](https://img.shields.io/github/v/release/mbsintegrations/LG-Camera-Overlay?cacheSeconds=300&v=1.2.1)](https://github.com/mbsintegrations/LG-Camera-Overlay/releases)
 [![GitHub stars](https://img.shields.io/github/stars/mbsintegrations/LG-Camera-Overlay?style=flat&logo=github)](https://github.com/mbsintegrations/LG-Camera-Overlay)
 [![NAS Docker tested](https://img.shields.io/badge/NAS_Docker-tested-2ea44f)](docs/VALIDATION.md#configurator-and-nas-docker-acceptance-25-october-2026)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
@@ -16,6 +16,7 @@ Show a live camera panel over what you are watching on an LG webOS TV, including
 - Shows a live camera in a small panel over your TV programme, without switching away from it or replacing its sound.
 - Lets Home Assistant show the panel from a dashboard button or an automation, such as a person detection or doorbell press.
 - Closes automatically after your chosen time, or when you press BACK on the TV remote.
+- **1.2.1 fixes screen restoration blocking alerts when the TV is already on.** Re-import the HA launch blueprint; existing 1.2.0 TV apps and relays need no reinstall. See [patch update steps](docs/HOME-ASSISTANT.md#upgrade-from-120-to-121-screensaver-fix).
 - In 1.2.0: choose the panel's position, border and compact style; pause automatic alerts with a shared HA helper; optionally dismiss LG's screensaver before an alert. See [setup and upgrade instructions](docs/HOME-ASSISTANT.md#updates) and [model-specific test results](docs/VALIDATION.md).
 
 ## What you need
@@ -46,7 +47,7 @@ The TV app, relay and Home Assistant configuration are three separate installati
 
 ## Guided installation
 
-Download **LG-Camera-Overlay-Setup-1.2.0.zip** from [v1.2.0](https://github.com/mbsintegrations/LG-Camera-Overlay/releases/tag/v1.2.0), extract it and open **Start Setup.cmd** on Windows (Node.js LTS 22+ required). Mac/Linux use `sh "Start Setup.command"`. The wizard guides TV pairing and app installation, camera settings, panel preview, HA script creation and private Docker export. The permanent relay still needs Docker or Node/FFmpeg; setup is not an unattended service installer.
+Download **LG-Camera-Overlay-Setup-1.2.1.zip** from [v1.2.1](https://github.com/mbsintegrations/LG-Camera-Overlay/releases/tag/v1.2.1), extract it and open **Start Setup.cmd** on Windows (Node.js LTS 22+ required). Mac/Linux use `sh "Start Setup.command"`. The wizard guides TV pairing and app installation, camera settings, panel preview, HA script creation and private Docker export. The permanent relay still needs Docker or Node/FFmpeg; setup is not an unattended service installer.
 
 ![Configurator host selection with sample television preview](docs/images/setup-01-host.png)
 
@@ -83,7 +84,7 @@ Recorded TV software versions:
 
 These are recorded device values, not minimum requirements. The SDK version is the TV's reported `sdkVersion`; a separate webOS marketing/platform version was not captured. Firmware and SDK values are not interchangeable. See [version evidence](docs/VALIDATION.md#tv-software-version-evidence) for dates and limits.
 
-**Community-tested TV:** a user reported the overlay working on **OLED77C2AUA / webOS26 11.2.0-3704** (report received 26 October 2026), including all streaming apps they tested. The webOS version is reproduced as supplied; firmware and SDK values were not separately provided. See [community test results](docs/VALIDATION.md#community-tested-tvs).
+**Community-tested TV:** a user reported the overlay working on **OLED77C2AUA / webOS26 11.2.1-3704** (report received 26 October 2026), including all streaming apps they tested. The webOS version is reproduced as supplied; firmware and SDK values were not separately provided. See [community test results](docs/VALIDATION.md#community-tested-tvs).
 
 The predecessor deployment was physically confirmed on **OLED65B9PLA / SDK 4.10.0** over YouTube and Netflix, and **65NANO766QA / SDK 7.6.0** over Netflix. These are historical observations, not certification of every firmware or this release. See [release validation](docs/VALIDATION.md) for new-build evidence and remaining limits.
 

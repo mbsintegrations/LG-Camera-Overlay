@@ -46,7 +46,7 @@ function createServer(options = {}) {
   function artifact() {
     const file = path.resolve(
         __dirname,
-        "../dist/" + appId() + "_1.2.0_all.ipk",
+        "../dist/" + appId() + "_1.2.1_all.ipk",
       ),
       manifest = path.resolve(__dirname, "../dist/SHA256SUMS.txt");
     if (!fs.existsSync(file) || !fs.existsSync(manifest))
@@ -58,7 +58,7 @@ function createServer(options = {}) {
     const match = fs
       .readFileSync(manifest, "utf8")
       .split(/\r?\n/)
-      .find((l) => l.trim().split(/\s+/)[1] === appId() + "_1.2.0_all.ipk");
+      .find((l) => l.trim().split(/\s+/)[1] === appId() + "_1.2.1_all.ipk");
     if (!match || match.split(/\s+/)[0] !== actual)
       fail("The TV package checksum does not match.");
     return file;
@@ -262,7 +262,7 @@ function createServer(options = {}) {
             const state = store.summary(),
               status = await runtime.status();
             send(res, 200, {
-              version: "1.2.0",
+              version: "1.2.1",
               platform: process.platform,
               node: process.versions.node,
               ready: state.ready,

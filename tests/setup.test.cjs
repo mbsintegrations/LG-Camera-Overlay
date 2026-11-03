@@ -183,7 +183,7 @@ test("screen restore is opt-in and survives profile and blueprint export", (t) =
   assert.equal(s.launch(enabled).payload.params.dismissScreensaver, undefined);
 });
 
-test("screen restore orders commands and aborts on off TV, failed command or standby race", async (t) => {
+test("screen restore orders commands, tolerates rejection and guards off TV or standby race", async (t) => {
   let state = "on", failScreen = false, standbyAfterScreen = false;
   const commands = [];
   const fake = http.createServer(async (req,res) => {
@@ -207,8 +207,8 @@ test("screen restore orders commands and aborts on off TV, failed command or sta
   await assert.rejects(()=>haLaunch(connection,payload,true),/off or unavailable/);
   assert.equal(commands.length,0);
   state="on";failScreen=true;
-  await assert.rejects(()=>haLaunch(connection,payload,true),/screen-on/);
-  assert.equal(commands.length,1);
+  await haLaunch(connection,payload,true);
+  assert.deepEqual(commands.map(c=>c.command),["com.webos.service.tvpower/power/turnOnScreen","system.launcher/launch"]);
   commands.length=0;failScreen=false;standbyAfterScreen=true;
   await assert.rejects(()=>haLaunch(connection,payload,true),/no longer active/);
   assert.equal(commands.length,1);
